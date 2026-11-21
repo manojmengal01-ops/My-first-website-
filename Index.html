@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Gallery</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #eee4d2;
+  color: #382b20;
+  font-family: Georgia, serif;
+  padding: 22px;
+}
+
+header {
+  text-align: center;
+  padding: 35px 10px;
+  border-bottom: 2px solid #8c6346;
+}
+
+header h1 {
+  font-size: clamp(36px, 8vw, 65px);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+
+header p {
+  margin-top: 12px;
+  font-style: italic;
+  color: #8c6346;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px 5px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #69462e;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+nav a:hover {
+  color: #c46c35;
+}
+
+.section-title {
+  text-align: center;
+  margin: 25px 0;
+  font-size: 25px;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  max-width: 950px;
+  margin: auto;
+}
+
+.photo {
+  background: #fffaf0;
+  padding: 9px;
+  border: 1px solid #c8b69d;
+  box-shadow: 3px 4px 10px #75614b33;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.photo:hover {
+  transform: translateY(-5px) rotate(-1deg);
+}
+
+.photo img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  filter: sepia(15%);
+}
+
+.photo p {
+  text-align: center;
+  padding: 12px 3px 5px;
+  font-size: 14px;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 10px 20px;
+  color: #896c51;
+  font-size: 13px;
+}
+
+/* Full-size image preview */
+#viewer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #211b17ed;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  z-index: 10;
+}
+
+#viewer img {
+  max-width: 95%;
+  max-height: 85vh;
+  border: 7px solid #fff5e6;
+}
+
+#viewer button {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 35px;
+  cursor: pointer;
+}
+
+@media (min-width: 650px) {
+  .gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .photo img {
+    height: 230px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Retro Gallery</h1>
+  <p>Collecting little moments forever.</p>
+</header>
+
+<nav>
+  <a href="#">HOME</a>
+  <a href="#gallery">GALLERY</a>
+  <a href="#about">ABOUT</a>
+</nav>
+
+<h2 class="section-title" id="gallery">
+  ✦ Memories Collection ✦
+</h2>
+
+<main class="gallery">
+
+  <div class="photo" onclick="showImage(this)">
+    <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=700" alt="Sunset landscape">
+    <p>Golden Hour</p>
+  </div>
+
+  <div class="photo" onclick="showImage(this)">
+    <img src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=700" alt="Night sky">
+    <p>Midnight Sky</p>
+  </div>
+
+  <div class="photo" onclick="showImage(this)">
+    <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=700" alt="Mountain lake">
+    <p>Silent Mountains</p>
+  </div>
+
+  <div class="photo" onclick="showImage(this)">
+    <img src="https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=700" alt="Nature">
+    <p>Nature Memories</p>
+  </div>
+
+  <div class="photo" onclick="showImage(this)">
+    <img src="https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=700" alt="Green field">
+    <p>Green Dreams</p>
+  </div>
+
+  <div class="photo" onclick="showImage(this)">
+    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=700" alt="Travel">
+    <p>Lost Somewhere</p>
+  </div>
+
+</main>
+
+<footer id="about">
+  <p>Made with ♥ and nostalgia</p>
+  <p>© 2026 Retro Gallery</p>
+</footer>
+
+<div id="viewer" onclick="closeImage()">
+  <button onclick="closeImage()">×</button>
+  <img id="largeImage" src="" alt="Full-size preview">
+</div>
+
+<script>
+function showImage(element) {
+  const image = element.querySelector("img");
+  document.getElementById("largeImage").src = image.src;
+  document.getElementById("viewer").style.display = "flex";
+}
+
+function closeImage() {
+  document.getElementById("viewer").style.display = "none";
+}
+</script>
+
+</body>
+    </html>
